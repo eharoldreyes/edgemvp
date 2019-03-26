@@ -37,9 +37,11 @@ class DocumentScanFragment : Fragment(),
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-
 		presenter = DocumentScanPresenter(this)
+	}
 
+	override fun onActivityCreated(savedInstanceState: Bundle?) {
+		super.onActivityCreated(savedInstanceState)
 		initAsync(OpenCVLoader.OPENCV_VERSION_3_4_0, activity, object : BaseLoaderCallback(activity) {
 			override fun onManagerConnected(status: Int) {
 				when (status) {
@@ -52,7 +54,6 @@ class DocumentScanFragment : Fragment(),
 				}
 			}
 		})
-
 	}
 
 	override fun onStart() {
